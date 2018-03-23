@@ -1,0 +1,17 @@
+Swoole http server is started at http://0.0.0.0:9501
+[2018-03-20 21:07:05 #49263.0]	NOTICE	Server is shutdown now.
+Swoole http server is started at http://0.0.0.0:9501
+Swoole http server is started at http://0.0.0.0:9501
+[2018-03-21 00:26:20 #58374.0]	NOTICE	Server is shutdown now.
+Swoole http server is started at http://0.0.0.0:9501
+[2018-03-21 00:45:05 #58669.0]	NOTICE	Server is shutdown now.
+[2018-03-21 20:23:14 *60446.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-03-21 20:23:14 *60446.1]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-03-21 20:23:14 *60443.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-03-21 20:23:14 *60443.0]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-03-21 20:23:14 #60411.0]	WARNING	swSignal_callback: signal[1] callback is null.
+[2018-03-21 20:23:14 #60411.0]	WARNING	swProcessPool_wait: [Manager]unknow worker[pid=-1]
+[2018-03-21 20:23:14 *60444.2]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-03-21 20:23:14 *60444.2]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-03-21 20:23:14 *60445.3]	WARNING	swSignalfd_onSignal: signal[1] callback is null.
+[2018-03-21 20:23:14 *60445.3]	WARNING	swSignalfd_onSignal: signal[1] callback is null.

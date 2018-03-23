@@ -1,0 +1,28 @@
+[2018-03-22 03:55:27 $4995.0]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught ArgumentCountError: Too few arguments to function {closure}(), 1 passed and exactly 2 expected in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php:51
+Stack trace:
+#0 [internal function]: {closure}(Object(Swoole\WebSocket\Server))
+#1 /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php(96): Swoole\Http\Server->start()
+#2 {main}
+  thrown in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.p
+[2018-03-22 03:55:27 #4994.4]	WARNING	swServer_signal_hanlder: Fatal Error: manager process exit. status=255, signal=0.
+[2018-03-22 20:47:42 *10043.0]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Swoole\Exception: cannot serialize or unserialize. in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php:100
+Stack trace:
+#0 [internal function]: Swoole\Http\Server->__sleep()
+#1 /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php(100): Swoole\Server->task(Array, NULL, Object(Closure))
+#2 {main}
+  thrown in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php on line 100.
+[2018-03-22 20:47:42 $10036.0]	WARNING	swManager_check_exit_status: worker#0 abnormal exit, status=255, signal=0
+[2018-03-22 20:50:20 $10064.0]	WARNING	swManager_check_exit_status: worker#0 abnormal exit, status=255, signal=0
+[2018-03-22 20:51:07 $10081.0]	WARNING	swManager_check_exit_status: worker#0 abnormal exit, status=255, signal=0
+[2018-03-22 23:19:55 *10851.0]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught Swoole\Exception: cannot serialize or unserialize. in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php:98
+Stack trace:
+#0 [internal function]: Swoole\Http\Server->__sleep()
+#1 /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php(98): Swoole\Server->task(Array, NULL)
+#2 {main}
+  thrown in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php on line 98.
+[2018-03-22 23:19:55 $10844.0]	WARNING	swManager_check_exit_status: worker#0 abnormal exit, status=255, signal=0
+[2018-03-23 01:36:09 *11717.0]	ERROR	zm_deactivate_swoole (ERROR 503): Fatal error: Uncaught ArgumentCountError: Too few arguments to function {closure}(), 1 passed and exactly 2 expected in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php:110
+Stack trace:
+#0 {main}
+  thrown in /mnt/hgfs/YunDun/jason-gao/swooleUsing/src/websocket/WebSocketServer.php on line 110.
+[2018-03-23 01:36:09 $11710.0]	WARNING	swManager_check_exit_status: worker#0 abnormal exit, status=255, signal=0
