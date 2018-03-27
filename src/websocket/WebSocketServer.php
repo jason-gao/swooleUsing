@@ -114,14 +114,17 @@ $server->on('message', function (swoole_websocket_server $server, $frame) {
 
     global $fdTimeIdMap;
 
-    //清除定时器
-    clearTimer($frame->fd);
+    //先清除定时器
+    clearTimer($frame->fd, 'onMessage');
 
     //新建定时器任务
     $fdTimeIdMap[$frame->fd][] = swoole_timer_tick($timeMs, function ($timerId) use ($server, $frame, $_params) {
         $jsonParams = json_encode($_params);
         echo "timeId:$timerId,params:$jsonParams\n";
-        $server->push($frame->fd, json_encode(['fd' => $frame->fd]));
+        //客户端关闭连接后frame->fd不存在的情况处理
+        if (fdValid($frame->fd, $server)) {
+            $server->push($frame->fd, json_encode(['fd' => $frame->fd]));
+        }
     });
 
 });
@@ -145,12 +148,8 @@ $server->on('message', function (swoole_websocket_server $server, $frame) {
 $server->on('close', function (swoole_websocket_server $server, $fd) {
     echo "connection close:fd:{$fd},worker_id:{$server->worker_id}\n";
 
-    global $fdTimeIdMap;
-
-    var_dump($fdTimeIdMap);
-
     //清除定时器
-    clearTimer($fd);
+    clearTimer($fd, 'onClose');
 
 });
 
@@ -173,6 +172,7 @@ $server->on('task', function (swoole_websocket_server $server, $task_id, $worker
             $server->push($fd, "from client:$clientFd-" . $clientData);
         }
     }
+
     $server->finish("task finished return\n");
 });
 
@@ -190,16 +190,37 @@ $server->on('finish', function (swoole_websocket_server $server, $task_id, $task
 });
 
 
-function clearTimer($fd)
+function clearTimer($fd, $source = '')
 {
+    global $fdTimeIdMap;
+    var_dump("#{$source}#clearTimer start");
+    var_dump($fdTimeIdMap);
+
     if (isset($fdTimeIdMap[$fd])) {
-        foreach ($fdTimeIdMap[$fd] as $timerId) {
+        foreach ($fdTimeIdMap[$fd] as $key => $timerId) {
             echo "清除定时器:timeId:{$timerId}\n";
             if (swoole_timer_exists($timerId)) {
                 swoole_timer_clear($timerId);
+                unset($fdTimeIdMap[$fd][$key]);
             }
         }
     }
+
+    var_dump("#{$source}#clearTimer end");
+    var_dump($fdTimeIdMap);
 }
+
+
+function fdValid($_fd, $server)
+{
+    foreach ($server->connections as $fd) {
+        if ($_fd == $fd) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 
 $server->start();
